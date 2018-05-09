@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello World</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	<div id="app">{{content}}</div>
+	<div>{{content}}</div>
+	<!-- 第二个content没有被vue接管，所以原样显示。 -->
+	<script>
+		// var dom = document.getElementById('app')
+		// dom.innerHTML = 'hello world'
+
+
+		// setTimeout(function () {
+		// 	dom.innerHTML = 'bye world'
+		// },  2000)
+		// 原生js设置一个2s的延时器
+
+
+		//  要使用之前要先引入vue这个js,实例化一个对象。	
+		var app = new Vue({
+			el: '#app',
+			data: {
+				content: 'hello world vue'
+			}
+		})
+		setTimeout(function(){
+			app.$data.content = 'bye world'
+		}, 2000)
+		// 只需要改变数据即可，不需要关注dom了。
+		// 创建一个vue的实例，实例接受配置项，el是实例负责管理的区域。id为app的标签内容
+		// 数据 content 为helloworld 
+	</script>
+</body>
+</html>
+

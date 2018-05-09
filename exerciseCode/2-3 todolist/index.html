@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue">
+        <button v-on:click="addListItem">提交</button>
+        <ul>
+            <!-- <li>第一课内容</li>
+		<li>第二课内容</li> -->
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            list: [
+            ],
+            inputValue: '',
+        },
+        methods:{
+        	addListItem: function () {
+        		// alert(this.inputValue)
+        		this.list.push(this.inputValue)
+        		this.inputValue = ''
+
+        	}
+        }
+    })
+    </script>
+</body>
+
+</html>
