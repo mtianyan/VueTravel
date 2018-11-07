@@ -11,8 +11,6 @@
         <input type="text" v-model="inputValue">
         <button v-on:click="addListItem">提交</button>
         <ul>
-            <!-- <li>第一课内容</li>
-		<li>第二课内容</li> -->
             <li v-for="item in list">{{item}}</li>
         </ul>
     </div>
@@ -20,19 +18,18 @@
     var app = new Vue({
         el: '#app',
         data: {
-            list: [
-            ],
+            list: [],
             inputValue: '',
         },
         methods:{
-        	addListItem: function () {
-        		// alert(this.inputValue)
-        		this.list.push(this.inputValue)
-        		this.inputValue = ''
+            addListItem: function () {
+                this.list.push(this.inputValue)
+                this.inputValue = ''
 
-        	}
+            }
         }
     })
+        
     </script>
 </body>
 
