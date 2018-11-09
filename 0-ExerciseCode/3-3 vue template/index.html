@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 模板语法</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <div v-text="name +'skr'"></div>
+         <div v-html="name"></div>
+    </div>
+    <script>
+    var app = new Vue({
+        el: '#root',
+        data: {
+            name : '<h3> hello mtianyan text </h3>',
+        },
+    }) 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 实例</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <div :style="[styleObj, {fontSize: '20px'}]" @click="handleDivClick"> Hello world </div>
+    </div>
+    <script>
+    var app = new Vue({
+        el: '#root',
+        data: {
+            styleObj:{
+                color: "black"
+            }
+        },
+        methods: {
+            handleDivClick: function () {
+                this.styleObj.color = this.styleObj.color === "black"?
+                    "red" : "black";
+            }
+        }
+    }) 
+    </script>
+</body>
+
+</html>

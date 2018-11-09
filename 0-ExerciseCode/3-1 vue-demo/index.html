@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 实例</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <div @click="handleClick">
+             {{ message }}
+        </div>
+        <item></item>
+    </div>
+    <script>
+    Vue.component('item',{
+        template: '<div>hello component</div>'
+    })
+    var app = new Vue({
+        el: '#root',
+        data: {
+            message: 'hello vue 实例',
+        },
+        methods:{
+            handleClick: (function () {
+                alert("hello")
+                this.message = '我被点了'
+            })
+        }
+    }) 
+    </script>
+</body>
+
+</html>
