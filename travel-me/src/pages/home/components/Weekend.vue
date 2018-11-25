@@ -2,13 +2,13 @@
   <div>
     <div class="title">周末去哪儿</div>
     <ul>
-      <li class="item border-bottom" v-for="item of weekendList" :key="item.id">
+      <router-link class="item border-bottom" v-for="item of weekendList" :key="item.id" :to="'/detail/' + item.id">
         <img :src="item.imgUrl" class="item-img"/>
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
           <p class="item-desc">{{item.desc}}</p>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
