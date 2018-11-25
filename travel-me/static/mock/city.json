@@ -26,11 +26,12 @@
       "spell": "guilin",
       "name": "桂林"
     }],
+
     "cities": {
       "A": [{
         "id": 56,
         "spell": "aba",
-        "name": "阿坝"
+        "name": "阿坝藏族羌族自治州"
       }, {
         "id": 57,
         "spell": "akesu",

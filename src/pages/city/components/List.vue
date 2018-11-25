@@ -69,7 +69,9 @@ export default {
   watch: {
     letter () {
       if (this.letter) {
+        console.log(this.letter)
         const element = this.$refs[this.letter][0]
+        console.log(element)
         this.scroll.scrollToElement(element)
       }
     }
@@ -98,6 +100,7 @@ export default {
     right: 0
     bottom: 0
     .title
+      background: #eee
       line-height: .54rem
       background: #eee
       padding-left: .2rem
