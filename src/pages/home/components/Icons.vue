@@ -1,19 +1,18 @@
 <template>
   <div class="icons">
-    <swiper :options="swiperOption">
-      <swiper-slide v-for="(page, index) of pages" :key="index">
-        <div
-          class="icon"
-          v-for="item of page"
-          :key="item.id"
-        >
-          <div class='icon-img'>
-            <img class='icon-img-content' :src='item.imgUrl' />
-          </div>
-          <p class="icon-desc">{{item.desc}}</p>
+    <swiper class="icon-wrapper" :options="swiperOption">
+      <swiper-slide v-for="(page, index) in pages" :key="index">
+        <div class="item" v-for="(item,index) in page" :key="index">
+          <img :src="item.imgUrl" class="icon-img">
+          <p class="icon-title">{{item.title}}</p>
         </div>
       </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
+    <div class="location-wrapper border-top">
+      <div class="location border-right"><span class="iconfont icon-yanjizhushou-shangchuan_GPS"></span>定位失败</div>
+      <div class="location"><span class="iconfont icon-world"></span>必游榜单</div>
+    </div>
   </div>
 </template>
 
@@ -21,19 +20,21 @@
 export default {
   name: 'HomeIcons',
   props: {
-    list: Array
+    iconList: Array
   },
   data () {
     return {
       swiperOption: {
-        autoplay: false
+        pagination: {
+          el: '.swiper-pagination'
+        }
       }
     }
   },
   computed: {
     pages () {
       const pages = []
-      this.list.forEach((item, index) => {
+      this.iconList.forEach((item, index) => {
         const page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []
@@ -46,41 +47,38 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-  @import '~styles/varibles.styl'
-  @import '~styles/mixins.styl'
-  .icons >>> .swiper-container
-    height: 0
-    padding-bottom: 50%
+<style scoped lang="stylus">
+  @import "~styles/variables.styl"
+  .icons >>> .swiper-pagination-bullet-active
+    background-color $bgColor !important
   .icons
-    margin-top: .1rem
-    .icon
-      position: relative
-      overflow: hidden
-      float: left
-      width: 25%
-      height: 0
-      padding-bottom: 25%
+    background-color #fff
+  .swiper-slide
+    display flex
+    flex-wrap wrap
+    width 100%
+    height 0
+    padding-bottom calc(50%)
+    overflow hidden
+    .item
+      overflow hidden
+      padding-bottom calc(25% - .4rem)
+      width 25%
+      height 0
       .icon-img
-        position: absolute
-        top: 0
-        left: 0
-        right: 0
-        bottom: .44rem
-        box-sizing: border-box
-        padding: .1rem
-        .icon-img-content
-          display: block
-          margin: 0 auto
-          height: 100%
-      .icon-desc
-        position: absolute
-        left: 0
-        right: 0
-        bottom: 0
-        height: .44rem
-        line-height: .44rem
-        text-align: center
-        color: $darkTextColor
-        ellipsis()
+        display block
+        padding .1rem
+        width calc(100% - 1.0rem)
+        margin 0 auto
+        margin-top .05rem
+      .icon-title
+        text-align center
+        line-height .4rem
+  .location-wrapper
+    display flex
+    height 1rem
+    line-height 1rem
+    .location
+      text-align center
+      flex 1
 </style>

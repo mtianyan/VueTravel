@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import Bscroll from 'better-scroll'
 import { mapMutations } from 'vuex'
 export default {
   name: 'CitySearch',
@@ -73,15 +72,12 @@ export default {
       this.$router.push('/')
     },
     ...mapMutations(['changeCity'])
-  },
-  mounted () {
-    this.scroll = new Bscroll(this.$refs.search)
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-  @import '~styles/varibles.styl'
+  @import '~styles/variables.styl'
   .search
     height: .72rem
     padding: 0 .1rem

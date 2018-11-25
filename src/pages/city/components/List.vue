@@ -1,125 +1,153 @@
 <template>
-  <div class="list" ref="wrapper">
-    <div>
-      <div class="area">
-        <div class="title border-topbottom">当前城市</div>
-        <div class="button-list">
-          <div class="button-wrapper">
-            <div class="button">{{this.currentCity}}</div>
-          </div>
+  <div class="list wrapper">
+    <div class="title border-topbottom">当前城市: {{ this.currentCity }}</div>
+    <div class="list-item">
+      <div class="title">热门城市</div>
+      <div class="item-wrapper">
+        <div
+          class="item"
+          v-for="item in hotCities"
+          :key="item.id"
+          @click="handleCityChange(item.name);"
+        >
+          {{ item.name }}
         </div>
       </div>
-      <div class="area">
-        <div class="title border-topbottom">热门城市</div>
-        <div class="button-list">
-          <div
-            class="button-wrapper"
-            v-for="item of hot"
-            :key="item.id"
-            @click="handleCityClick(item.name)"
-          >
-            <div class="button">{{item.name}}</div>
-          </div>
+    </div>
+    <div class="list-item alphabet">
+      <div class="title">字母排序</div>
+      <div class="item-wrapper">
+        <div
+          class="item"
+          v-for="item in alphabet"
+          :key="item"
+          @click="letter(item);"
+        >
+          {{ item }}
         </div>
       </div>
-      <div
-        class="area"
-        v-for="(item, key) of cities"
-        :key="key"
-        :ref="key"
-      >
-        <div class="title border-topbottom">{{key}}</div>
-        <div class="item-list">
-          <div
-            class="item border-bottom"
-            v-for="innerItem of item"
-            :key="innerItem.id"
-            @click="handleCityClick(innerItem.name)"
-          >
-            {{innerItem.name}}
-          </div>
+    </div>
+    <div
+      class="list-item city wrapper-city"
+      v-for="(item, index) in cities"
+      :key="index"
+    >
+      <div class="title">{{ index }}</div>
+      <div class="item-wrapper">
+        <div
+          class="item"
+          v-for="city in item"
+          :key="city.id"
+          @click="handleCityChange(city.name);"
+        >
+          {{ city.name }}
         </div>
+        <div class="bt"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Bscroll from 'better-scroll'
 import { mapState, mapMutations } from 'vuex'
+// import BScroll from 'better-scroll'
 export default {
   name: 'CityList',
   props: {
-    hot: Array,
-    cities: Object,
-    letter: String
+    hotCities: Array,
+    cities: [Object, Array]
   },
   computed: {
+    alphabet () {
+      const res = []
+      for (let k in this.cities) {
+        res.push(k)
+      }
+      return res
+    },
     ...mapState({
       currentCity: 'city'
     })
   },
   methods: {
-    handleCityClick (city) {
-      this.changeCity(city)
+    handleCityChange (name) {
+      this.changeCity(name)
       this.$router.push('/')
+    },
+    letter (index) {
+      if (index) {
+        // console.log(index)
+        // const element = this.$refs[index][0]
+        // console.log(element)
+        // TODO: 滚动不生效
+        // this.scroll = new BScroll('.wrapper-city').scrollToElement(element)
+      }
     },
     ...mapMutations(['changeCity'])
   },
-  watch: {
-    letter () {
-      if (this.letter) {
-        console.log(this.letter)
-        const element = this.$refs[this.letter][0]
-        console.log(element)
-        this.scroll.scrollToElement(element)
-      }
-    }
-  },
   mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+    // this.scroll = new BScroll('.wrapper', {
+    //   scrollY: true,
+    //   click: true
+    // })
   }
 }
 </script>
 
-<style lang="stylus" scoped>
-  @import '~styles/varibles.styl'
-  .border-topbottom
-    &:before
-      border-color: #ccc
-    &:after
-      border-color: #ccc
-  .border-bottom
-    &:before
-      border-color: #ccc
-  .list
-    overflow: hidden
-    position: absolute
-    top: 1.58rem
-    left: 0
-    right: 0
-    bottom: 0
+<style scoped lang="stylus">
+@import "~styles/mixins.styl"
+.border-topbottom
+  display: none
+.list
+  .list-item
     .title
-      background: #eee
-      line-height: .54rem
-      background: #eee
-      padding-left: .2rem
-      color: #666
-      font-size: .26rem
-    .button-list
-      overflow: hidden
-      padding: .1rem .6rem .1rem .1rem
-      .button-wrapper
-        float: left
-        width: 33.33%
-        .button
-          margin: .1rem
-          padding: .1rem 0
-          text-align: center
-          border: .02rem solid #ccc
-          border-radius: .06rem
-    .item-list
+      font-size .24rem
+      padding-left .2rem
+      line-height .72rem
+      height .72rem
+
+    .item-wrapper
+      display flex
+      flex-wrap wrap
+      justify-content space-between
+
       .item
-        line-height: .76rem
-        padding-left: .2rem
+        height .9rem
+        line-height .9rem
+        text-align center
+        width calc(100% / 3 - .01rem)
+        margin-bottom .02rem
+        background-color #fff
+
+    &.alphabet
+      .item-wrapper
+        padding .3rem 0
+        justify-content flex-start
+        background-color #fff
+
+        .item
+          margin 0
+          width calc(100% / 6)
+
+    &.city
+      .item-wrapper
+        justify-content flex-start
+        background-color #fff
+        position relative
+
+        .bt
+          position absolute
+          width 100%
+          height .04rem
+          background-color #fff
+          bottom 0
+          left 0
+          z-index 1
+
+        .item
+          border-bottom .02rem solid #ddd
+          box-sizing border-box
+          width 25%
+          padding 0 .1rem
+          ellipsis()
 </style>

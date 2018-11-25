@@ -7,7 +7,7 @@
           {{this.sightName}}
         </div>
         <div class="banner-number">
-          <span class="iconfont banner-icon">&#xe692;</span>
+          <span class="iconfont banner-icon icon-tupian"></span>
           {{this.bannerImgs.length}}
         </div>
       </div>

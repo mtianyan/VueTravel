@@ -1,16 +1,15 @@
 <template>
   <div class="header">
     <div class="header-left">
-      <div class="iconfont back-icon">&#xe624;</div>
+      <div class="iconfont icon-fanhui back-icon"></div>
     </div>
     <div class="header-input">
-      <span class="iconfont">&#xe632;</span>
+      <span class="iconfont icon-sousuo"></span>
       输入城市/景点/游玩主题
     </div>
-    <router-link to='/city'>
-      <div class="header-right">
-        {{this.city}}
-        <span class="iconfont arrow-icon">&#xe64a;</span>
+    <router-link to="/city">
+      <div class="header-right">{{ this.city }}
+        <span class="iconfont icon-jiantouarrow486 .arrow-icon"></span>
       </div>
     </router-link>
   </div>
@@ -27,7 +26,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @import '~styles/varibles.styl'
+  @import '~styles/variables.styl'
   .header
     display: flex
     line-height: $headerHeight

@@ -1,10 +1,12 @@
 <template>
   <div>
     <home-header></home-header>
-    <home-swiper :list="swiperList"></home-swiper>
-    <home-icons :list="iconList"></home-icons>
-    <home-recommend :list="recommendList"></home-recommend>
-    <home-weekend :list="weekendList"></home-weekend>
+    <home-swiper :swiperList="swiperList"></home-swiper>
+    <home-icons :iconList="iconList"></home-icons>
+    <home-weekly-hot :hotList="hotList" :topIcon="topIcon"></home-weekly-hot>
+    <home-you-like :itemList="itemList"></home-you-like>
+    <home-weekends :weekendList="weekendList"></home-weekends>
+    <home-footer></home-footer>
   </div>
 </template>
 
@@ -12,25 +14,31 @@
 import HomeHeader from './components/Header'
 import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
-import HomeRecommend from './components/Recommend'
-import HomeWeekend from './components/Weekend'
+import HomeWeeklyHot from './components/WeeklyHot'
+import HomeYouLike from './components/YouLike'
+import HomeWeekends from './components/Weekend'
+import HomeFooter from './components/Footer'
 import axios from 'axios'
 import { mapState } from 'vuex'
+
 export default {
   name: 'Home',
   components: {
     HomeHeader,
     HomeSwiper,
     HomeIcons,
-    HomeRecommend,
-    HomeWeekend
+    HomeWeeklyHot,
+    HomeYouLike,
+    HomeWeekends,
+    HomeFooter
   },
   data () {
     return {
-      lastCity: '',
       swiperList: [],
       iconList: [],
-      recommendList: [],
+      hotList: [],
+      topIcon: [],
+      itemList: [],
       weekendList: []
     }
   },
@@ -43,12 +51,13 @@ export default {
         .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {
-      res = res.data
-      if (res.ret && res.data) {
-        const data = res.data
+      if (res.data.ret && res.data.data) {
+        const data = res.data.data
         this.swiperList = data.swiperList
         this.iconList = data.iconList
-        this.recommendList = data.recommendList
+        this.hotList = data.hotList
+        this.topIcon = data.topIcon
+        this.itemList = data.itemList
         this.weekendList = data.weekendList
       }
     }
@@ -66,6 +75,5 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
 </style>

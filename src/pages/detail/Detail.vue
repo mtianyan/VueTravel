@@ -6,9 +6,7 @@
       :bannerImgs="gallaryImgs"
     ></detail-banner>
     <detail-header></detail-header>
-    <div class="content">
-      <detail-list :list="list"></detail-list>
-    </div>
+    <div class="content"><detail-list :list="list"></detail-list></div>
   </div>
 </template>
 
@@ -34,11 +32,13 @@ export default {
   },
   methods: {
     getDetailInfo () {
-      axios.get('/api/detail.json', {
-        params: {
-          id: this.$route.params.id
-        }
-      }).then(this.handleGetDataSucc)
+      axios
+        .get('/api/detail.json', {
+          params: {
+            id: this.$route.params.id
+          }
+        })
+        .then(this.handleGetDataSucc)
     },
     handleGetDataSucc (res) {
       res = res.data
@@ -58,6 +58,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .content
-    height: 50rem
+.content
+  height: 50rem
 </style>

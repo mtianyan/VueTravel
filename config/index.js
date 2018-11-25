@@ -7,14 +7,14 @@ const path = require('path')
 module.exports = {
   dev: {
 
-    // Paths fiddler charles
+    // Paths webpack-dev-server
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:8083',
-        pathRewrite:{
-          '^/api':'/static/mock'
+        target: 'http://localhost:8080',
+        pathRewrite: {
+          '^/api': '/static/mock'
         }
       }
     },
