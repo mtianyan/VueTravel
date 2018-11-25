@@ -5,13 +5,14 @@
   "author": "mtianyan <1147727180@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --mode development --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --host 0.0.0.0 --mode development --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "better-scroll": "^1.13.2",
     "fastclick": "^1.0.6",
     "start": "^5.1.0",
