@@ -1,6 +1,7 @@
 <template>
   <div class="list" ref="wrapper">
     <div>
+      <div class="title border-topbottom">当前城市: {{ this.currentCity }}</div>
       <div class="list-item">
         <div class="title">热门城市</div>
         <div class="item-wrapper">
@@ -27,7 +28,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
-import {mapMutations} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 
 export default {
   name: 'CityList',
@@ -47,7 +48,10 @@ export default {
         res.push(k)
       }
       return res
-    }
+    },
+    ...mapState({
+      currentCity: 'city'
+    })
   },
   methods: {
     handleCityChange (name) {
@@ -72,6 +76,8 @@ export default {
 
 <style scoped lang="stylus">
   @import "~styles/mixins.styl"
+  .border-topbottom
+    display: none
   .list
     .list-item
       .title

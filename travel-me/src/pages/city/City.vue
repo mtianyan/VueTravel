@@ -19,7 +19,7 @@ export default {
   data () {
     return {
       hotCities: [],
-      cities: []
+      cities: {}
     }
   },
   components: {

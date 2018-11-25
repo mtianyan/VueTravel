@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "better-scroll": "^1.13.2",
     "fastclick": "^1.0.6",
     "start": "^5.1.0",
     "stylus": "^0.54.5",
@@ -19,8 +20,7 @@
     "vue": "^2.5.17",
     "vue-awesome-swiper": "^2.6.7",
     "vue-router": "^3.0.1",
-    "better-scroll": "^1.13.2",
-    "vuex": "latest"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
