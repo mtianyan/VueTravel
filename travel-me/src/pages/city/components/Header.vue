@@ -16,6 +16,7 @@ export default {
 <style lang="stylus" scoped>
   @import '~styles/variables.styl'
   .header
+    border: $bgColor
     position: relative
     overflow: hidden
     height: $headerHeight

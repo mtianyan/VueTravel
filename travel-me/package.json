@@ -18,7 +18,9 @@
     "stylus-loader": "^3.0.2",
     "vue": "^2.5.17",
     "vue-awesome-swiper": "^2.6.7",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "better-scroll": "latest",
+    "vuex": "latest"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
