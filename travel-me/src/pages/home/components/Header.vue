@@ -7,7 +7,7 @@
       <span class="iconfont icon-sousuo"></span>
       输入城市/景点/游玩主题
     </div>
-      <div class="header-right">城市
+      <div class="header-right">西安
         <span class="iconfont icon-jiantouarrow486 .arrow-icon"></span>
       </div>
   </div>

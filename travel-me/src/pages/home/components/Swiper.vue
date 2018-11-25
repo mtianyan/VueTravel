@@ -27,6 +27,9 @@ export default {
       }, {
         id: '0002',
         imgUrl: 'http://img1.qunarzz.com/piao/fusion/1809/12/856f100069809e02.jpg_750x200_e3485a2b.jpg'
+      }, {
+        id: '0003',
+        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1805/fe/ca8ed7adc3ff9f02.jpg_750x200_49735140.jpg'
       }]
     }
   }
@@ -39,7 +42,7 @@ export default {
   overflow: hidden
   width: 100%
   height: 0
-  padding-bottom: 31.25%
+  padding-bottom: 26.6%
   .swipe-img
     width: 100%
 </style>
