@@ -1,36 +1,32 @@
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>TodoList</title>
     <script src="./vue.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        <input type="text" v-model="inputValue">
-        <button v-on:click="addListItem">提交</button>
-        <ul>
-            <li v-for="item in list">{{item}}</li>
-        </ul>
+      <input type="text" v-model="inputValue" />
+      <button v-on:click="addListItem">提交</button>
+      <ul>
+        <li v-for="item in list">{{item}}</li>
+      </ul>
     </div>
     <script>
-    var app = new Vue({
-        el: '#app',
+      var app = new Vue({
+        el: "#app",
         data: {
-            list: [],
-            inputValue: '',
+          list: [],
+          inputValue: ""
         },
-        methods:{
-            addListItem: function () {
-                this.list.push(this.inputValue)
-                this.inputValue = ''
-
-            }
+        methods: {
+          addListItem: function() {
+            this.list.push(this.inputValue);
+            this.inputValue = "";
+          }
         }
-    })
-        
+      });
     </script>
-</body>
-
+  </body>
 </html>
