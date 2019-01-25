@@ -1,39 +1,32 @@
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>计算属性，方法，监听器</title>
     <script src="./vue.js"></script>
-</head>
+  </head>
 
-<body>
-    <div id="root">
-        <div>
-             {{ fullName }}
-             {{ age }}
-        </div>
-    </div>
+  <body>
+    <div id="root"><div>{{ fullName }} {{ age }}</div></div>
     <script>
-    var app = new Vue({
-        el: '#root',
+      var app = new Vue({
+        el: "#root",
         data: {
-            firstNmae: "m",
-            lastName: "tianyan",
-            fullName: "mtianyan",
-            age: 28
+          firstNmae: "m",
+          lastName: "tianyan",
+          fullName: "mtianyan",
+          age: 28
         },
-        watch:{
-            firstNmae: function () {
-                console.log("计算了一次");
-                this.fullName = this.firstNmae + " watch " + this.lastName;
-            },
-            lastName: function () {
-                console.log("计算了一次");
-                this.fullName = this.firstNmae + " watch " + this.lastName;
-            }
+        watch: {
+          firstNmae: function() {
+            console.log("计算了一次");
+            this.fullName = this.firstNmae + " watch " + this.lastName;
+          },
+          lastName: function() {
+            console.log("计算了一次");
+            this.fullName = this.firstNmae + " watch " + this.lastName;
+          }
         }
-    }) 
+      });
     </script>
-</body>
-
+  </body>
 </html>

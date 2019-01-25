@@ -1,46 +1,43 @@
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>非父子组件间传值(Bus/总线/发布订阅模式/观察者模式)</title>
     <script src="./vue.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="root">
-        <child content="mtianyan1"></child>
-        <child content="mtianyan2"></child>
+      <child content="mtianyan1"></child> <child content="mtianyan2"></child>
     </div>
     <script>
-        Vue.prototype.bus = new Vue()
+      Vue.prototype.bus = new Vue();
 
-        Vue.component('child',{
-            data: function(){
-                return {
-                    selfContent: this.content
-                }
-            },
-            props: {
-                content: String
-            },
-            template: '<div @click="handleClick">{{ selfContent }}</div>',
-            methods:{
-                handleClick: function () {
-                    this.bus.$emit('change', this.selfContent)
-                }
-            },
-            mounted: function(){
-                var this_ = this
-                this.bus.$on('change', function(msg){
-                    this_.selfContent = msg
-                })
-            }
-        })
+      Vue.component("child", {
+        data: function() {
+          return {
+            selfContent: this.content
+          };
+        },
+        props: {
+          content: String
+        },
+        template: '<div @click="handleClick">{{ selfContent }}</div>',
+        methods: {
+          handleClick: function() {
+            this.bus.$emit("change", this.selfContent);
+          }
+        },
+        mounted: function() {
+          var this_ = this;
+          this.bus.$on("change", function(msg) {
+            this_.selfContent = msg;
+          });
+        }
+      });
 
-        var vm = new Vue({
-            el: '#root',
-        })
+      var vm = new Vue({
+        el: "#root"
+      });
     </script>
-</body>
-
+  </body>
 </html>

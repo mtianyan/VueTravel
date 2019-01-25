@@ -1,29 +1,25 @@
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>给组件绑定原生事件</title>
     <script src="./vue.js"></script>
-</head>
+  </head>
 
-<body>
-    <div id="root">
-        <child @click.native="handleClick"></child>
-    </div>
+  <body>
+    <div id="root"><child @click.native="handleClick"></child></div>
     <script>
-        Vue.component('child',{
-            template: '<div @click="handleChildClick" >child</div>',
-        })
+      Vue.component("child", {
+        template: '<div @click="handleChildClick" >child</div>'
+      });
 
-        var vm = new Vue({
-            el: '#root',
-            methods: {
-                handleClick: function () {
-                    alert('father click')
-                }
-            }
-        })
+      var vm = new Vue({
+        el: "#root",
+        methods: {
+          handleClick: function() {
+            alert("father click");
+          }
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>

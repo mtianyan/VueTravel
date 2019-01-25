@@ -1,25 +1,23 @@
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Vue 的条件渲染</title>
     <script src="./vue.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="root">
-        <div v-if="show"> 用户名: <input key="username"/></div>
-        <div v-else>邮箱名: <input key="email"/></div>
+      <div v-if="show">用户名: <input key="username" /></div>
+      <div v-else>邮箱名: <input key="email" /></div>
     </div>
     <script>
-    var app = new Vue({
-        el: '#root',
+      var app = new Vue({
+        el: "#root",
         data: {
-            message: "hello world",
-            show: false,
-        },
-    }) 
+          message: "hello world",
+          show: false
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>

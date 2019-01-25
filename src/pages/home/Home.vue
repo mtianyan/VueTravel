@@ -11,18 +11,18 @@
 </template>
 
 <script>
-import HomeHeader from './components/Header'
-import HomeSwiper from './components/Swiper'
-import HomeIcons from './components/Icons'
-import HomeWeeklyHot from './components/WeeklyHot'
-import HomeYouLike from './components/YouLike'
-import HomeWeekends from './components/Weekend'
-import HomeFooter from './components/Footer'
-import axios from 'axios'
-import { mapState } from 'vuex'
+import HomeHeader from "./components/Header";
+import HomeSwiper from "./components/Swiper";
+import HomeIcons from "./components/Icons";
+import HomeWeeklyHot from "./components/WeeklyHot";
+import HomeYouLike from "./components/YouLike";
+import HomeWeekends from "./components/Weekend";
+import HomeFooter from "./components/Footer";
+import axios from "axios";
+import { mapState } from "vuex";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     HomeHeader,
     HomeSwiper,
@@ -32,7 +32,7 @@ export default {
     HomeWeekends,
     HomeFooter
   },
-  data () {
+  data() {
     return {
       swiperList: [],
       iconList: [],
@@ -40,40 +40,38 @@ export default {
       topIcon: [],
       itemList: [],
       weekendList: []
-    }
+    };
   },
   computed: {
-    ...mapState(['city'])
+    ...mapState(["city"])
   },
   methods: {
-    getHomeInfo () {
-      axios.get('/api/index.json?city=' + this.city)
-        .then(this.getHomeInfoSucc)
+    getHomeInfo() {
+      axios.get("/api/index.json?city=" + this.city).then(this.getHomeInfoSucc);
     },
-    getHomeInfoSucc (res) {
+    getHomeInfoSucc(res) {
       if (res.data.ret && res.data.data) {
-        const data = res.data.data
-        this.swiperList = data.swiperList
-        this.iconList = data.iconList
-        this.hotList = data.hotList
-        this.topIcon = data.topIcon
-        this.itemList = data.itemList
-        this.weekendList = data.weekendList
+        const data = res.data.data;
+        this.swiperList = data.swiperList;
+        this.iconList = data.iconList;
+        this.hotList = data.hotList;
+        this.topIcon = data.topIcon;
+        this.itemList = data.itemList;
+        this.weekendList = data.weekendList;
       }
     }
   },
-  mounted () {
-    this.lastCity = this.city
-    this.getHomeInfo()
+  mounted() {
+    this.lastCity = this.city;
+    this.getHomeInfo();
   },
-  activated () {
+  activated() {
     if (this.lastCity !== this.city) {
-      this.lastCity = this.city
-      this.getHomeInfo()
+      this.lastCity = this.city;
+      this.getHomeInfo();
     }
   }
-}
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

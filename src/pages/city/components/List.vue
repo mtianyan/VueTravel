@@ -49,32 +49,32 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations } from "vuex";
 // import BScroll from 'better-scroll'
 export default {
-  name: 'CityList',
+  name: "CityList",
   props: {
     hotCities: Array,
     cities: [Object, Array]
   },
   computed: {
-    alphabet () {
-      const res = []
+    alphabet() {
+      const res = [];
       for (let k in this.cities) {
-        res.push(k)
+        res.push(k);
       }
-      return res
+      return res;
     },
     ...mapState({
-      currentCity: 'city'
+      currentCity: "city"
     })
   },
   methods: {
-    handleCityChange (name) {
-      this.changeCity(name)
-      this.$router.push('/')
+    handleCityChange(name) {
+      this.changeCity(name);
+      this.$router.push("/");
     },
-    letter (index) {
+    letter(index) {
       if (index) {
         // console.log(index)
         // const element = this.$refs[index][0]
@@ -83,15 +83,15 @@ export default {
         // this.scroll = new BScroll('.wrapper-city').scrollToElement(element)
       }
     },
-    ...mapMutations(['changeCity'])
+    ...mapMutations(["changeCity"])
   },
-  mounted () {
+  mounted() {
     // this.scroll = new BScroll('.wrapper', {
     //   scrollY: true,
     //   click: true
     // })
   }
-}
+};
 </script>
 
 <style scoped lang="stylus">

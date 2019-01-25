@@ -1,49 +1,46 @@
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>父子组件传值</title>
     <script src="./vue.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="root">
-        <counter :count='3' @change='handleCrease'></counter>
-        <counter :count='2' @change='handleCrease'></counter>
-        <div>{{ total }}</div>
+      <counter :count="3" @change="handleCrease"></counter>
+      <counter :count="2" @change="handleCrease"></counter>
+      <div>{{ total }}</div>
     </div>
     <script>
-    var counter ={
-        props: ['count'],
+      var counter = {
+        props: ["count"],
         data: function() {
-            return {
-                number: this.count
-            }
+          return {
+            number: this.count
+          };
         },
         template: '<div @click="handleClick">{{ number }}</div>',
-        methods:{
-            handleClick: function () {
-                this.number += 2;
-                this.$emit('change',2);
-            }
+        methods: {
+          handleClick: function() {
+            this.number += 2;
+            this.$emit("change", 2);
+          }
         }
-    }
-    var vm = new Vue({
-        el: '#root',
-        data:{
-            total: 5
+      };
+      var vm = new Vue({
+        el: "#root",
+        data: {
+          total: 5
         },
-        components:{
-            counter: counter
+        components: {
+          counter: counter
         },
-        methods:{
-            handleCrease: function(step) {
-                this.total += step;
-            }
+        methods: {
+          handleCrease: function(step) {
+            this.total += step;
+          }
         }
-
-    }) 
+      });
     </script>
-</body>
-
+  </body>
 </html>

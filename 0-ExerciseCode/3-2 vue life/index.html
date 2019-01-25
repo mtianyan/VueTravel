@@ -1,54 +1,50 @@
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Vue 实例生命周期函数</title>
     <script src="./vue.js"></script>
-</head>
+  </head>
 
-<body>
-    <div id="root">
-        
-    </div>
+  <body>
+    <div id="root"></div>
     <script>
-    Vue.component('item',{
-        template: '<div>hello component</div>'
-    })
-    // 生命周期函数就是Vue实例在某一个时间点会自动执行的函数
-    var app = new Vue({
-        el: '#root',
-        template: '<div>{{ test }}</div>',
+      Vue.component("item", {
+        template: "<div>hello component</div>"
+      });
+      // 生命周期函数就是Vue实例在某一个时间点会自动执行的函数
+      var app = new Vue({
+        el: "#root",
+        template: "<div>{{ test }}</div>",
         data: {
-            test: 'hello test update',
+          test: "hello test update"
         },
-        beforeCreate: function () {
-            console.log("beforeCreate")
+        beforeCreate: function() {
+          console.log("beforeCreate");
         },
-        created: function () {
-            console.log("created")
+        created: function() {
+          console.log("created");
         },
-        beforeMount: function () {
-            console.log(this.$el)
-            console.log("beforeMount")
+        beforeMount: function() {
+          console.log(this.$el);
+          console.log("beforeMount");
         },
-        mounted: function () {
-            console.log(this.$el)
-            console.log("mounted")
+        mounted: function() {
+          console.log(this.$el);
+          console.log("mounted");
         },
-        beforeDestroy: function () {
-            console.log("beforeDestory")
+        beforeDestroy: function() {
+          console.log("beforeDestory");
         },
-        destroyed: function () {
-            console.log("destoryed")
+        destroyed: function() {
+          console.log("destoryed");
         },
-        beforeUpdate: function () {
-            console.log("beforeUpdated")
+        beforeUpdate: function() {
+          console.log("beforeUpdated");
         },
-        updated: function () {
-            console.log("updated")
-        },
-    }) 
+        updated: function() {
+          console.log("updated");
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>

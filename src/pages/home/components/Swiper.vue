@@ -12,26 +12,26 @@
 
 <script>
 export default {
-  name: 'HomeSwiper',
+  name: "HomeSwiper",
   props: {
     swiperList: Array
   },
-  data () {
+  data() {
     return {
       swiperOption: {
-        pagination: '.swiper-pagination',
+        pagination: ".swiper-pagination",
         loop: true,
         autoplay: 2500,
         paginationClickable: true
       }
-    }
+    };
   },
   computed: {
-    showSwiper () {
-      return this.swiperList.length
+    showSwiper() {
+      return this.swiperList.length;
     }
   }
-}
+};
 </script>
 <style lang="stylus" scoped>
 .wrapper >>> .swiper-pagination-bullet-active

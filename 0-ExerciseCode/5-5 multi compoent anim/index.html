@@ -1,55 +1,50 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue中多个元素或组件的过渡</title>
+    <script src="./vue.js"></script>
+    <style type="text/css">
+      .fade-enter {
+        opacity: 0;
+      }
+      .fade-enter-active {
+        transition: opacity 3s;
+      }
+      .fade-leave-to {
+        opacity: 0;
+      }
+      .fade-leave-active {
+        transition: opacity 3s;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Vue中多个元素或组件的过渡</title>
-  <script src="./vue.js"></script>
-  <style type="text/css">
-    .fade-enter {
-      opacity: 0;
-    }
-    .fade-enter-active {
-      transition: opacity 3s;
-    }
-    .fade-leave-to {
-      opacity: 0;
-    }
-    .fade-leave-active {
-      transition: opacity 3s;
-    }
-  </style>
-</head>
+  <body>
+    <div id="root">
+      <transition mode="out-in" name="fade">
+        <component :is="type"> </component>
+      </transition>
+      <button @click="handleClick">切换</button>
+    </div>
+    <script>
+      Vue.component("child", {
+        template: "<div>child</div>"
+      });
 
-<body>
-  <div id="root">
-    <transition 
-    mode="out-in"
-    name="fade">
-      <component :is="type"> </component>
-    </transition>
-    <button @click="handleClick">切换</button>
-  </div>
-  <script>
-  Vue.component('child',{
-    template: '<div>child</div>'
-  })
-
-  Vue.component('child-one',{
-    template: '<div>child-one</div>'
-  })
-  var vm = new Vue({
-    el: '#root',
-    data: {
-        type: 'child',
-    },
-    methods:{
-        handleClick: function () {
-            this.type = this.type === 'child'? 'child-one': 'child';
+      Vue.component("child-one", {
+        template: "<div>child-one</div>"
+      });
+      var vm = new Vue({
+        el: "#root",
+        data: {
+          type: "child"
+        },
+        methods: {
+          handleClick: function() {
+            this.type = this.type === "child" ? "child-one" : "child";
+          }
         }
-    }
-  })
-
-  </script>
-</body>
-
+      });
+    </script>
+  </body>
 </html>

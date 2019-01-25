@@ -1,54 +1,51 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue中同时使用过渡和动画</title>
+    <script src="./vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="animate.css" />
+    <style type="text/css">
+      .fade-enter {
+        opacity: 0;
+      }
+      .fade-enter-active {
+        transition: opacity 1s;
+      }
+      .fade-leave-to {
+        opacity: 0;
+      }
+      .fade-leave-active {
+        transition: opacity 1s;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Vue中同时使用过渡和动画</title>
-  <script src="./vue.js"></script>
-  <link rel="stylesheet" type="text/css" href="animate.css">
-   <style type="text/css">
-    .fade-enter {
-      opacity: 0;
-    }
-    .fade-enter-active {
-      transition: opacity 1s;
-    }
-    .fade-leave-to {
-      opacity: 0;
-    }
-    .fade-leave-active {
-      transition: opacity 1s;
-    }
-  </style>
-</head>
-
-<body>
-  <div id="root">
-    <transition
-    :duration="{enter:5000, leave:10000}"
-    name="fade"
-    enter-active-class="animated swing fade-enter-active" 
-    leave-active-class="animated shake fade-leave-active"
-    appear
-    appear-active-class="animated swing">
-      <div v-if="show">hello world</div>
-    </transition>
-    <button @click="handleClick">切换</button>
-  </div>
-  <script>
-
-  var vm = new Vue({
-    el: '#root',
-    data: {
-        show: true,
-    },
-    methods:{
-        handleClick: function () {
+  <body>
+    <div id="root">
+      <transition
+        :duration="{enter:5000, leave:10000}"
+        name="fade"
+        enter-active-class="animated swing fade-enter-active"
+        leave-active-class="animated shake fade-leave-active"
+        appear
+        appear-active-class="animated swing"
+      >
+        <div v-if="show">hello world</div>
+      </transition>
+      <button @click="handleClick">切换</button>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#root",
+        data: {
+          show: true
+        },
+        methods: {
+          handleClick: function() {
             this.show = !this.show;
+          }
         }
-    }
-  })
-
-  </script>
-</body>
-
+      });
+    </script>
+  </body>
 </html>
